@@ -4,15 +4,18 @@ import scream from './scream.mp3';
 import { useState, useEffect } from 'react';
 
 const PLAYERS = [
+  '#CantaMuca',
   'Gabriel',
-  'Wolf',
-  'Cestari',
-  'My Friend',
-  'Edu',
-  'Daniel',
-  'Bruno',
-  'André',
+  'Jensen&Jensen',
+  'Moksés',
+  'Rita',
+  'Isaac Back',
+  'Isadora Back',
+  'Tribo A',
+  'Tribo B',
 ];
+
+const TIMER = 30;
 
 function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -46,10 +49,9 @@ function App() {
   }, [startTimer]);
 
   useEffect(() => {
-    if (seconds === 30 || seconds === 1) {
+    if (seconds % TIMER === 1) {
       const audio = new Audio(scream);
       audio.play();
-      console.log('alarme');
       // if(availablePlayers.length)
       getRandomPlayer();
     }
